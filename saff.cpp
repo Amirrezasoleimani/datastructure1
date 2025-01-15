@@ -77,6 +77,39 @@ public:
             cout << "deleted item is = " << temple << endl;
         }
     }
+
+
+    void reverse()
+    {
+        if (isempty())
+        {
+            cout << "quque is empty, cannot reverse\n";
+            return;
+        }
+        int start = front + 1;
+        int end = rear;
+
+        while (start < end)
+        {
+            int temp = quque[start];
+            quque[start] = quque[end];
+            quque[end] = temp;
+
+            start++;
+            end--;
+        }
+    }
+
+
+    int peek()
+    {
+        if (rear == -1)
+        {
+            cout << "there is nothing to peek\n";
+            return -1;
+        }
+        return quque[front + 1];
+    }
     void display()
     {
         cout << "your last quque update" << endl;
@@ -98,7 +131,9 @@ int main()
     Quque exam(7);
     exam.enquque(2);
     exam.enquque(3);
+    exam.enquque(6);
+    cout << exam.peek() << endl;
     exam.display();
-    exam.deletequque();
+    exam.reverse();
     exam.display();
 }
